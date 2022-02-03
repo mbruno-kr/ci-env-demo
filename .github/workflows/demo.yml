@@ -1,0 +1,27 @@
+name: demo
+on: push
+jobs:
+  demo:
+    strategy:
+        matrix:
+          env: [dev, test, stage, prod]
+    environment: ${{matrix.env}}
+    runs-on: ubuntu-latest
+    steps:
+       - name: Wut animal u like
+         shell: bash
+         run: |
+          case ${{secrets.state}} in
+            4)
+                echo "i like treee"
+                ;;
+            3)
+                echo "hot dog!"
+                ;;
+            2)
+                echo "turtle!"
+                ;;
+            *)
+              echo "im lost :D"
+              ;;
+          esac
